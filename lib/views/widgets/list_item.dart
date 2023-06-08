@@ -44,7 +44,7 @@ class ListItem extends StatelessWidget {
             ),
           ),
         ),
-const SizedBox(height: 15.0),
+        const SizedBox(height: 15.0),
         LinearProgressIndicator(
           value: .71,
           backgroundColor: const Color(0xff1c232d),

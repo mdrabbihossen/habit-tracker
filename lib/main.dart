@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:habit_tracker/views/details/details_screen.dart';
 import 'package:habit_tracker/views/screens/home.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,10 +14,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+          primarySwatch: Colors.blue,
+          fontFamily: GoogleFonts.raleway().fontFamily),
       home: const HomeScreen(),
-      routes: {
-        "details": (context) => const DetailsScreen(),
-      },
     );
   }
 }
