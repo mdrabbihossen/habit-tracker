@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/model/data/habit.dart';
+import 'package:habit_tracker/views/widgets/list_item.dart';
 import 'package:intl/intl.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -198,6 +199,14 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                   ],
+                ),
+              ),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: habits2.length,
+                  itemBuilder: (context, index) => ListItem(
+                    id: index,
+                  ),
                 ),
               ),
             ],
