@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/model/data/habit.dart';
+import 'package:intl/intl.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -86,13 +87,6 @@ class HomeScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: habit['color'],
                         borderRadius: BorderRadius.circular(15),
-                        boxShadow: [
-                          BoxShadow(
-                            color: habit['color'],
-                            blurRadius: 5.0,
-                            offset: const Offset(0, 3),
-                          ),
-                        ],
                       ),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -118,6 +112,92 @@ class HomeScreen extends StatelessWidget {
                       ),
                     );
                   },
+                ),
+              ),
+              const SizedBox(height: 35),
+              Container(
+                height: 90,
+                padding: const EdgeInsets.all(15),
+                decoration: const BoxDecoration(
+                  color: Color(0xff1b232e),
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(15),
+                    bottomLeft: Radius.circular(15),
+                  ),
+                ),
+                child: ListView.builder(
+                  itemCount: 7,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    final int day = DateTime.now().day + index;
+                    return FittedBox(
+                      child: Container(
+                        width: 90,
+                        height: 90,
+                        margin: const EdgeInsets.only(right: 15.0),
+                        padding: const EdgeInsets.all(15.0),
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: day == DateTime.now().day
+                              ? const Color(0xff727be8)
+                              : const Color(0xff131b26),
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              day.toString(),
+                              style: TextStyle(
+                                color: day == DateTime.now().day
+                                    ? Colors.white
+                                    : Colors.grey[500],
+                                fontSize: 25,
+                                fontWeight: day == DateTime.now().day
+                                    ? FontWeight.bold
+                                    : FontWeight.normal,
+                              ),
+                            ),
+                            Text(
+                              DateFormat('EE').format(
+                                DateTime.now().add(
+                                  Duration(days: index),
+                                ),
+                              ),
+                              style: TextStyle(
+                                  color: day == DateTime.now().day
+                                      ? Colors.white
+                                      : Colors.grey[700],
+                                  fontWeight: day == DateTime.now().day
+                                      ? FontWeight.bold
+                                      : FontWeight.normal),
+                            )
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
+              ),
+              const SizedBox(height: 35),
+              RichText(
+                text: TextSpan(
+                  children: [
+                    const TextSpan(
+                      text: "Your Habits ",
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 21,
+                      ),
+                    ),
+                    TextSpan(
+                      text: " 5",
+                      style: TextStyle(
+                        color: Colors.grey[500],
+                        fontSize: 21,
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ],
